@@ -13,6 +13,14 @@ angular.module('12oder3App', [
         controller  : 'MainCtrl'
       })
 
+      .when('/admin-dashboard', {
+        templateUrl: 'views/admin-dashboard.html',
+        controller: 'AdminDashboardCtrl'
+      })
+      .when('/admin-add-questions', {
+        templateUrl: 'views/admin-add-questions.html',
+        controller: 'AdminAddQuestionsCtrl'
+      })
       .otherwise({
         redirectTo: '/'
       });

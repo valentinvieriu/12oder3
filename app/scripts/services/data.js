@@ -11,19 +11,23 @@ angular.module('12oder3App')
       Localstorage,
       Uuids
       ) {
-    var fBase = {};
+    var fBase = {
+        firebaseUrl: 'https://12oder3.firebaseio.com/'
+    };
 
     function init() {
-      var firebaseUrl   = 'https://12oder3.firebaseio.com/';
       var currentUserId = Localstorage.get('uuid');
       if (!currentUserId) {
         currentUserId = 'user_'+Uuids.newuuid();
         Localstorage.set('uuid',currentUserId);
       };
 
-    fBase.userVote = $firebase( new Firebase(firebaseUrl+'votes/'+currentUserId+'/vote') );
+    fBase.userVote    = $firebase( new Firebase(fBase.firebaseUrl+'votes/'+currentUserId+'/vote') );
+    fBase.questions   = $firebase( new Firebase(fBase.firebaseUrl+'questions/') );
+    fBase.users       = $firebase( new Firebase(fBase.firebaseUrl+'users/') );
+    fBase.currentUser = $firebase( new Firebase(fBase.firebaseUrl+'users/'+currentUserId) );
     // ref.onDisconnect().remove();
-    fBase.allVotes = $firebase( new Firebase(firebaseUrl+'votes/') );
+    fBase.allVotes = $firebase( new Firebase(fBase.firebaseUrl+'votes/') );
 
     };
 
