@@ -1,0 +1,51 @@
+<h2>Add and vote questions <span class="pull-right" ng-class="{'text-danger': !remainingVotes}"> {{remainingVotes}} votes remaining</span></h2>
+<form role="form">
+<div class="panel panel-default" ng-repeat="q in questions |orderByPriority|orderBy:'votes':true">
+  <div class="panel-body">
+		<div class="row">
+			<div class="col-xs-12">
+				<div class="form-group">
+			    	<textarea id="question{{$index+1}}" name="question{{$index+1}}" class="form-control" rows="5" ng-model="q.question"></textarea>
+			  	</div>
+			</div>
+
+		</div>
+		<div class="row">
+			<div class="col-xs-4"  ng-repeat="answer in ['a1','a2','a3'] track by $index">
+				<div class="form-group">
+			    	<label for="answer{{answer}}">Answer {{$index+1}}</label>
+			    	<textarea id="answer{{answer}}" name="answer{{answer}}" class="form-control" rows="2" ng-model="q[answer]"></textarea>
+			    	<div class="radio">
+			          <label>
+			            <input type="radio" name="correctAnswer{{q.$id}}" value="{{answer}}" ng-model="q.correctAnswer">
+			            Correct
+			          </label>
+			        </div>
+			  	</div>
+			</div>
+
+		</div>
+	<div class="row">
+		<div class="col-xs-12">
+			<div class="form-group">
+		    	<label for="longAnswer{{$index+1}}">Long answer {{$index+1}}</label>
+		    	<textarea id="longAnswer{{$index+1}}" name="longAnswer{{$index+1}}" class="form-control" rows="5" ng-model="q.longAnswer"></textarea>
+		  	</div>
+		</div>
+
+	</div>
+  </div>
+  <div class="panel-footer">
+	<span>
+		<button href ng-click="upVote(q.$id)" ng-disabled="!remainingVotes" class="btn btn-default btn-lg">+ <i class="glyphicon glyphicon-thumbs-up"></i></button>
+		<button href ng-click="downVote(q.$id)" ng-disabled="!remainingVotes" class="btn btn-default btn-lg">- <i class="glyphicon glyphicon-thumbs-down"></i></button>
+		<span>{{q.votes}} votes {{q.$priority}}</span>
+		<a href ng-click="delete(q.$id)" class="btn btn-default btn-lg pull-right"><i class="glyphicon glyphicon-trash"></i> Delete</a>
+		<a href ng-click="save(q.$id,q)" class="btn btn-primary btn-lg pull-right"><i class="glyphicon glyphicon-save"></i>  Save Question</a>
+	</span>
+  </div>
+</div>
+
+  <button ng-click="addQuestion()" class="btn btn-default btn-lg"><i class="glyphicon glyphicon-plus"></i> Add Question</button>
+  <button ng-click="saveQuestions()" type="submit" class="btn btn-primary btn-lg"><i class="glyphicon glyphicon-save"></i>  Save all changes</button>
+</form>

@@ -1,0 +1,147 @@
+<!doctype html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>1,2 oder 3 -  the game</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width">
+    <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+    <link rel="stylesheet" href="styles/vendor.css"/>
+    <link rel="stylesheet" href="styles/da176e4d.main.css"/>
+  </head>
+  <body ng-app="12oder3App">
+    <!--[if lt IE 7]>
+      <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+    <![endif]-->
+    <nav class="navbar navbar-default" role="navigation">
+      <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-9">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#">1, 2 oder 3 - The game</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-9">
+          <ul class="nav navbar-nav pull-right">
+              <li><a ng-href="#/">Home</a></li>
+              <li><a ng-href="#/admin-dashboard">Dashboard</a></li>
+              <li><a ng-href="#/admin-add-questions">Admin questions</a></li>
+          </ul>
+        </div><!-- /.navbar-collapse -->
+      </div><!-- /.container-fluid -->
+    </nav>
+
+    <!-- Add your site or application content here -->
+    <div class="container" ng-view="">
+
+    </div>
+
+    <script src="scripts/7593ef60.vendor.js"></script>
+
+        <script src="scripts/d9135069.scripts.js"></script>
+
+
+
+<!-- Begin Templates -->
+<script type="text/ng-template" id="views/admin-add-questions.html">
+<h2>Add and vote questions <span class="pull-right" ng-class="{'text-danger': !remainingVotes}"> {{remainingVotes}} votes remaining</span></h2>
+<form role="form">
+<div class="panel panel-default" ng-repeat="q in questions |orderByPriority|orderBy:'votes':true">
+  <div class="panel-body">
+		<div class="row">
+			<div class="col-xs-12">
+				<div class="form-group">
+			    	<textarea id="question{{$index+1}}" name="question{{$index+1}}" class="form-control" rows="5" ng-model="q.question"></textarea>
+			  	</div>
+			</div>
+
+		</div>
+		<div class="row">
+			<div class="col-xs-4"  ng-repeat="answer in ['a1','a2','a3'] track by $index">
+				<div class="form-group">
+			    	<label for="answer{{answer}}">Answer {{$index+1}}</label>
+			    	<textarea id="answer{{answer}}" name="answer{{answer}}" class="form-control" rows="2" ng-model="q[answer]"></textarea>
+			    	<div class="radio">
+			          <label>
+			            <input type="radio" name="correctAnswer{{q.$id}}" value="{{answer}}" ng-model="q.correctAnswer">
+			            Correct
+			          </label>
+			        </div>
+			  	</div>
+			</div>
+
+		</div>
+	<div class="row">
+		<div class="col-xs-12">
+			<div class="form-group">
+		    	<label for="longAnswer{{$index+1}}">Long answer {{$index+1}}</label>
+		    	<textarea id="longAnswer{{$index+1}}" name="longAnswer{{$index+1}}" class="form-control" rows="5" ng-model="q.longAnswer"></textarea>
+		  	</div>
+		</div>
+
+	</div>
+  </div>
+  <div class="panel-footer">
+	<span>
+		<button href ng-click="upVote(q.$id)" ng-disabled="!remainingVotes" class="btn btn-default btn-lg">+ <i class="glyphicon glyphicon-thumbs-up"></i></button>
+		<button href ng-click="downVote(q.$id)" ng-disabled="!remainingVotes" class="btn btn-default btn-lg">- <i class="glyphicon glyphicon-thumbs-down"></i></button>
+		<span>{{q.votes}} votes {{q.$priority}}</span>
+		<a href ng-click="delete(q.$id)" class="btn btn-default btn-lg pull-right"><i class="glyphicon glyphicon-trash"></i> Delete</a>
+		<a href ng-click="save(q.$id,q)" class="btn btn-primary btn-lg pull-right"><i class="glyphicon glyphicon-save"></i>  Save Question</a>
+	</span>
+  </div>
+</div>
+
+  <button ng-click="addQuestion()" class="btn btn-default btn-lg"><i class="glyphicon glyphicon-plus"></i> Add Question</button>
+  <button ng-click="saveQuestions()" type="submit" class="btn btn-primary btn-lg"><i class="glyphicon glyphicon-save"></i>  Save all changes</button>
+</form>
+
+</script>
+
+<script type="text/ng-template" id="views/admin-dashboard.html">
+<p>This is the admin-dashboard view.</p>
+
+</script>
+
+<script type="text/ng-template" id="views/main.html">
+<input type="text" ng-model="currentUser.name">
+<div class="row">
+	<div class="well">
+		<button type ="button" class="btn btn-primary btn-lg btn-block" ng-click="vote(1)">Vote for 1</button>
+		<button type ="button" class="btn btn-success btn-lg btn-block" ng-click="vote(2)">Vote for 2</button>
+		<button type ="button" class="btn btn-danger  btn-lg btn-block" ng-click="vote(3)">Vote for 3</button>
+	</div>
+</div>
+
+
+</script>
+
+<script type="text/ng-template" id="views/play.html">
+<h2>{{currentQuestion.question}}</h2>
+<h3>Time left : {{timeLeft}} seconds. Choose your answer!</h3>
+<div class="row">
+	<div class="well" ng-hide="timeLeft==0">
+		<button type ="button" class="btn btn-primary btn-lg btn-block" ng-click="vote('a1')">{{currentQuestion.a1}}</button>
+		<button type ="button" class="btn btn-success btn-lg btn-block" ng-click="vote('a2')">{{currentQuestion.a2}}</button>
+		<button type ="button" class="btn btn-danger  btn-lg btn-block" ng-click="vote('a3')">{{currentQuestion.a3}}</button>
+	</div>
+	<div class="well" ng-show="timeLeft==0">
+		<h1 ng-if="isItRight()">You are RIGHT!!!</h1>
+		<h1 ng-if="!isItRight()">You are WRONG!!!</h1>
+	</div>
+</div>
+</script>
+<!-- End Templates -->
+
+</body>
+</html>
