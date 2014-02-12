@@ -14,7 +14,8 @@ angular.module('12oder3App')
 			  return Math.floor(Math.random() * (max - min + 1) + min);
 			},
       "userType" :function (type) {
-        return Localstorage.get('uuid').indexOf(type) != -1;
+        var userType = Localstorage.get('userType') || 'user';
+        return  userType.indexOf(type)!= -1;
       }
     };
   });

@@ -16,24 +16,34 @@ angular.module('12oder3App')
     };
 
     function init() {
+      var defer = $q.defer();
+
+      fBase.playPage       = $firebase( new Firebase(fBase.firebaseUrl+'playPage/') );
+      fBase.playDashboard  = $firebase( new Firebase(fBase.firebaseUrl+'playDashboard/') );
+      fBase.activeQuestion = $firebase( new Firebase(fBase.firebaseUrl+'activeQuestion/') );
+      fBase.playTimer      = $firebase( new Firebase(fBase.firebaseUrl+'playTimer/') );
+      fBase.questions      = $firebase( new Firebase(fBase.firebaseUrl+'questions/') );
+      fBase.users          = $firebase( new Firebase(fBase.firebaseUrl+'users/') );
+      fBase.votes          = $firebase( new Firebase(fBase.firebaseUrl+'votes/') );
+
       var currentUserId = Localstorage.get('uuid');
       if (!currentUserId) {
-        currentUserId = 'user_'+Uuids.newuuid();
-        Localstorage.set('uuid',currentUserId);
-      };
+        // currentUserId = 'user_'+Uuids.newuuid();
+        fBase.users.$add('newUser').then(function(ref){
+          currentUserId     = ref.name();
+          fBase.currentUser = $firebase( new Firebase(fBase.firebaseUrl+'users/'+currentUserId) );
+          Localstorage.set('uuid',currentUserId);
+          Localstorage.set('userType','user');
+          defer.resolve();
+        });
+      } else {
+        fBase.currentUser = $firebase( new Firebase(fBase.firebaseUrl+'users/'+currentUserId) );
+        defer.resolve();
+      }
 
-    fBase.playPage       = $firebase( new Firebase(fBase.firebaseUrl+'playPage/') );
-    fBase.playDashboard  = $firebase( new Firebase(fBase.firebaseUrl+'playDashboard/') );
-    fBase.activeQuestion = $firebase( new Firebase(fBase.firebaseUrl+'activeQuestion/') );
-    fBase.playTimer      = $firebase( new Firebase(fBase.firebaseUrl+'playTimer/') );
-    fBase.userVote       = $firebase( new Firebase(fBase.firebaseUrl+'votes/'+currentUserId+'/vote') );
-    fBase.questions      = $firebase( new Firebase(fBase.firebaseUrl+'questions/') );
-    fBase.users          = $firebase( new Firebase(fBase.firebaseUrl+'users/') );
-    fBase.votes          = $firebase( new Firebase(fBase.firebaseUrl+'votes/') );
-    fBase.currentUser    = $firebase( new Firebase(fBase.firebaseUrl+'users/'+currentUserId) );
-    // ref.onDisconnect().remove();
-    fBase.allVotes = $firebase( new Firebase(fBase.firebaseUrl+'votes/') );
-
+      
+      // ref.onDisconnect().remove();
+      return defer.promise;
     };
 
     function getSlide(sushiid, slideid) {

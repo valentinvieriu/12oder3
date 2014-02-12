@@ -6,13 +6,11 @@ angular.module('12oder3App')
 			$scope,
 			$routeParams,
 			$location,
-			Localstorage,
-			Uuids
+			Localstorage
 		) {
 			var currentUserId;
 			if ($routeParams.userType == 'admin' || $routeParams.userType == 'dashboard') {
-				currentUserId = $routeParams.userType +'_' + Uuids.newuuid();
-				Localstorage.set('uuid', currentUserId);
+				Localstorage.set('userType',$routeParams.userType);
 			}
 			else {
 				$location.path('/');

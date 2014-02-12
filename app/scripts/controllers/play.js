@@ -6,9 +6,11 @@ angular.module('12oder3App')
             $scope,
             $routeParams,
             $location,
+            Localstorage,
             data
         ) {
             var qid                = $routeParams.qid;
+            var currentUser        = Localstorage.get('uuid');
             var stop;
             $scope.timeOut         = data.timeOut;
             $scope.currentQuestion = data.fBase.questions.$child(qid);
@@ -29,7 +31,7 @@ angular.module('12oder3App')
 
 
             $scope.vote = function(vote) {
-                data.fBase.userVote.$set(vote);
+                data.fBase.votes.$child(qid+'/'+currentUser).$set(vote);
                 $scope.lastVote = vote;
             }
 

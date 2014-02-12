@@ -22,6 +22,14 @@ angular.module('12oder3App')
 			$interval.cancel(stop)
 			stop = undefined;
 		};		
+		$scope.alocate = function() {
+			var team = 0;
+			angular.forEach(data.fBase.users.$getIndex(), function(value, index){
+				team = (team === 3) ? 1 : (team + 1);
+				data.fBase.users.$child(value).$child('team').$set(team);
+
+			});
+		};		
 		$scope.usedQuestion = function(qid) {
 			return $scope.usedQuestions.indexOf(qid) == -1 ? false : true;
 		};
