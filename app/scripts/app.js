@@ -23,7 +23,18 @@ angular.module('12oder3App', [
             })
             .when('/play/:qid', {
                 templateUrl: 'views/play.html',
-                controller: 'PlayCtrl'
+                controller: 'PlayCtrl',
+                resolve : {
+                    load : function($q,$route,data){
+                        var defer = $q.defer();
+                        var qid   = $route.current.params.qid;
+                        
+                        data.fBase.questions.$child(qid).$on('loaded',function(){
+                            defer.resolve('questions loaded');
+                        });
+                        return defer.promise;
+                    }
+                }
             })
             .when('/set-user/:userType', {
               template: '<h1>Setting user type ...</h1>',
@@ -59,7 +70,7 @@ angular.module('12oder3App', [
             $rootScope.playPage.$on('loaded', function() {
                 var newRoute = $rootScope.playPage.$value;
                 $location.path(newRoute);
-                console.log($rootScope.playPage.$value)
+                // console.log($rootScope.playPage.$value)
             })
 
             $rootScope.playPage.$on('change', function(route) {

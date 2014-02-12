@@ -5,16 +5,29 @@ angular.module('12oder3App')
         function(
             $scope,
             $routeParams,
+            $location,
             data
         ) {
-            var qid = $routeParams.qid;
+            var qid                = $routeParams.qid;
             var stop;
+            $scope.timeOut         = data.timeOut;
             $scope.currentQuestion = data.fBase.questions.$child(qid);
-            $scope.currentUser = data.fBase.currentUser;
+            $scope.currentUser     = data.fBase.currentUser;
+            $scope.activeQuestion  = data.fBase.activeQuestion;
+            $scope.playTimer       = data.fBase.playTimer.$value;
+
             data.fBase.playTimer.$on('change',function(newTime){
-                $scope.timeLeft = data.fBase.playTimer.$value;
+                $scope.playTimer = data.fBase.playTimer.$value;
 
             });
+            $scope.activeQuestion.$on('loaded',function(){
+                if ($scope.activeQuestion.$value != qid) {
+                    $location.path('/');
+                }
+
+            });
+
+
             $scope.vote = function(vote) {
                 data.fBase.userVote.$set(vote);
                 $scope.lastVote = vote;

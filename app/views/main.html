@@ -1,9 +1,13 @@
-<input type="text" ng-model="currentUser.name">
-<div class="row">
-	<div class="well">
-		<button type ="button" class="btn btn-primary btn-lg btn-block" ng-click="vote(1)">Vote for 1</button>
-		<button type ="button" class="btn btn-success btn-lg btn-block" ng-click="vote(2)">Vote for 2</button>
-		<button type ="button" class="btn btn-danger  btn-lg btn-block" ng-click="vote(3)">Vote for 3</button>
-	</div>
+<div class="row" ng-show="currentUser.name">
+    <h1>Hi {{currentUser.name}}, the game will start soon!</h1>
 </div>
-
+<div class="row" ng-hide="currentUser.name">
+    <div class="col-sm-6">
+        <div class="input-group">
+            <input type="text" class="form-control" ng-model="formName" placeholder="Enter your name">
+            <span class="input-group-btn">
+                <button class="btn btn-default" type="button" ng-click="saveName(formName)">Start</button>
+            </span>
+        </div>
+    </div>
+</div>

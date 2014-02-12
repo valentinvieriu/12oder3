@@ -1,12 +1,21 @@
 @import "_variables";
 @import "bootstrap-sass/vendor/assets/stylesheets/bootstrap";
-body{
-	margin-bottom: 20px;
+
+.btn-block  {
+	padding-right : 10px;
+	padding-left  : 10px;
+	min-height    : 100px;
+	white-space   : normal;
 }
-
-
-.question-only {
-	.vote {
-		display: none;
+.btn {
+	&.a1 {
+		background-color: $brand-primary;
+	}
+	&.a2 {
+		background-color: $brand-success;
+	}
+	&.a3 {
+		background-color: $brand-danger;
 	}
 }
+

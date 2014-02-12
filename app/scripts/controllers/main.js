@@ -7,10 +7,10 @@ angular.module('12oder3App')
             data
         ) 
 {
-    $scope.message = "Hello World";
-
-    $scope.vote =  function(vote) {
-        data.fBase.userVote.$set(vote);
+	$scope.currentUser = data.fBase.currentUser;
+    $scope.saveName =  function(name) {
+        data.fBase.currentUser.$child('name').$set(name);
+        $scope.name = name;
     }
             
 });
