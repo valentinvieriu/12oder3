@@ -1,12 +1,20 @@
-<h2>{{currentQuestion.question}}</h2>
-<h3>Time left : {{timeLeft}} seconds. Choose your answer!</h3>
+
 <div class="row">
-	<div class="well" ng-hide="timeLeft==0">
-		<button type ="button" class="btn btn-primary btn-lg btn-block" ng-click="vote('a1')">{{currentQuestion.a1}}</button>
-		<button type ="button" class="btn btn-success btn-lg btn-block" ng-click="vote('a2')">{{currentQuestion.a2}}</button>
-		<button type ="button" class="btn btn-danger  btn-lg btn-block" ng-click="vote('a3')">{{currentQuestion.a3}}</button>
+	<h2 class="col-sm-12">{{currentQuestion.question}}</h2>
+</div>
+<div class="row">
+<div class="col-sm-12">
+	<div class="progress progress-striped active">
+	  <div class="progress-bar progress-bar-danger "  role="progressbar" aria-valuenow="45" aria-valuemin="0" aria-valuemax="100" style="width: {{(timeOut-playTimer+1)*10}}%">
+	  </div>
 	</div>
-	<div class="well" ng-show="timeLeft==0">
+</div>
+	<div class="col-sm-12" ng-hide="playTimer==0">
+		<button ng-repeat="answer in ['a1','a2','a3']" 
+			type ="button" class="btn {{answer}} btn-lg btn-block" 
+			ng-class="{'active':lastVote==answer}" ng-disabled="playTimer>10" ng-click="vote(answer)">{{currentQuestion[answer]}}</button>
+	</div>
+	<div class="col-sm-12" ng-show="playTimer==0">
 		<h1 ng-if="isItRight()">You are RIGHT!!!</h1>
 		<h1 ng-if="!isItRight()">You are WRONG!!!</h1>
 	</div>
