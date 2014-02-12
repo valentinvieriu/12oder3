@@ -10,8 +10,11 @@ angular.module('12oder3App')
 	) {
 		var stop;
 		$scope.questions = data.fBase.questions;
-		$scope.playTimer = 10;
 		data.fBase.playTimer.$bind($scope, 'playTimer');
+		
+		// data.fBase.playTimer.$on('loaded',function(){
+		// 	$scope.playTimer = data.timeOut + 1;
+		// });
 
 		$scope.waitMode = function() {
 			data.fBase.playDashboard.$set('/wait-dashboard');
@@ -22,7 +25,9 @@ angular.module('12oder3App')
 		$scope.setQuestion = function(qid) {
 			data.fBase.playPage.$set('/play/' + qid);
 			data.fBase.playDashboard.$set('/play-dashbard/' + qid);
-			
+			$scope.playTimer = data.timeOut + 1;
+		};
+		$scope.startTimer = function() {
 			$interval.cancel(stop)
 			stop = undefined;
 
@@ -35,6 +40,7 @@ angular.module('12oder3App')
 					$scope.playTimer -= 1;
 				}
 			}, 1000);
+
 		};
 
 	});

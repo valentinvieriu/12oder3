@@ -5,7 +5,8 @@
 <div class="row" ng-repeat="q in questions | orderByPriority">
 	<div class="col-md-8">{{q.question}}</div>
 	<div class="col-md-4">
-		<button class="btn btn-default" ng-click="setQuestion(q.$id)">Play Question</button>
+		<button class="btn btn-default" ng-click="setQuestion(q.$id)">Load Question</button>
+		<button class="btn btn-default" ng-click="startTimer()">Start Timer</button>
 	</div>
 </div>
 

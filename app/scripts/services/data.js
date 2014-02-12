@@ -55,6 +55,7 @@ angular.module('12oder3App')
 
     return {
       init  : init,
-      fBase : fBase
+      fBase : fBase,
+      timeOut: 10
     };
   });
