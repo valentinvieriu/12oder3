@@ -18,7 +18,7 @@
 
     <script src="scripts/7593ef60.vendor.js"></script>
 
-        <script src="scripts/b7886708.scripts.js"></script>
+        <script src="scripts/24f61d5b.scripts.js"></script>
 
 
 
@@ -115,6 +115,7 @@
         <div class="panel panel-default">
             <div class="panel-body">
                 <button class="btn btn-lg btn-default" ng-click="waitMode()">Waiting Mode</button>
+                <button class="btn btn-lg btn-default" ng-click="alocate()">Alocate to teams</button>
                 <button class="btn btn-danger pull-right" ng-click="reset()">Reset</button>
             </div>
         </div>
@@ -156,7 +157,11 @@
 
 <script type="text/ng-template" id="views/main.html">
 <div class="row" ng-show="currentUser.name">
-    <h1>Hi {{currentUser.name}}, the game will start soon!</h1>
+    <div class="col-sm-12">
+    	<div class="well">
+    		<h1>Hi {{currentUser.name}}, the game will start soon!</h1>
+    	</div>
+    </div>
 </div>
 <div class="row" ng-hide="currentUser.name">
     <div class="col-sm-6">
