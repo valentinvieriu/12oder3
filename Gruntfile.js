@@ -293,7 +293,7 @@ module.exports = function (grunt) {
             'scripts/vendors/**/*',
             'api/**/*',
             'images/{,*/}*.{webp}',
-            'fonts/*'
+            'styles/fonts/*'
           ]
         }, {
           expand: true,
