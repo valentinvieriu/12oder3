@@ -22,12 +22,13 @@ angular.module('12oder3App')
         Localstorage.set('uuid',currentUserId);
       };
 
-    fBase.playPage    = $firebase( new Firebase(fBase.firebaseUrl+'playPage/') );
-    fBase.playTimer   = $firebase( new Firebase(fBase.firebaseUrl+'playTimer/') );
-    fBase.userVote    = $firebase( new Firebase(fBase.firebaseUrl+'votes/'+currentUserId+'/vote') );
-    fBase.questions   = $firebase( new Firebase(fBase.firebaseUrl+'questions/') );
-    fBase.users       = $firebase( new Firebase(fBase.firebaseUrl+'users/') );
-    fBase.currentUser = $firebase( new Firebase(fBase.firebaseUrl+'users/'+currentUserId) );
+    fBase.playPage      = $firebase( new Firebase(fBase.firebaseUrl+'playPage/') );
+    fBase.playDashboard = $firebase( new Firebase(fBase.firebaseUrl+'playDashboard/') );
+    fBase.playTimer     = $firebase( new Firebase(fBase.firebaseUrl+'playTimer/') );
+    fBase.userVote      = $firebase( new Firebase(fBase.firebaseUrl+'votes/'+currentUserId+'/vote') );
+    fBase.questions     = $firebase( new Firebase(fBase.firebaseUrl+'questions/') );
+    fBase.users         = $firebase( new Firebase(fBase.firebaseUrl+'users/') );
+    fBase.currentUser   = $firebase( new Firebase(fBase.firebaseUrl+'users/'+currentUserId) );
     // ref.onDisconnect().remove();
     fBase.allVotes = $firebase( new Firebase(fBase.firebaseUrl+'votes/') );
 
