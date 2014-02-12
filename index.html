@@ -11,7 +11,7 @@
     <meta name="viewport" content="width=device-width">
     <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
     <link rel="stylesheet" href="styles/vendor.css"/>
-    <link rel="stylesheet" href="styles/da176e4d.main.css"/>
+    <link rel="stylesheet" href="styles/31200e24.main.css"/>
   </head>
   <body ng-app="12oder3App">
     <!--[if lt IE 7]>
@@ -46,9 +46,9 @@
 
     </div>
 
-    <script src="scripts/7593ef60.vendor.js"></script>
+    <script src="scripts/51771ef0.vendor.js"></script>
 
-        <script src="scripts/d9135069.scripts.js"></script>
+        <script src="scripts/502e8d2e.scripts.js"></script>
 
 
 
@@ -109,7 +109,22 @@
 </script>
 
 <script type="text/ng-template" id="views/admin-dashboard.html">
-<p>This is the admin-dashboard view.</p>
+<h1>Admin Dashboard</h1>
+<button class="btn btn-default" ng-click="waitMode()">Waiting</button>
+<hr>
+<h2>Play Timer : {{playTimer}} seconds</h2>
+<div class="row" ng-repeat="q in questions | orderByPriority">
+	<div class="col-md-8">{{q.question}}</div>
+	<div class="col-md-4">
+		<button class="btn btn-default" ng-click="setQuestion(q.$id)">Play Question</button>
+	</div>
+</div>
+
+
+</script>
+
+<script type="text/ng-template" id="views/dashboard.html">
+<p>This is the dashboard view.</p>
 
 </script>
 
@@ -123,6 +138,11 @@
 	</div>
 </div>
 
+
+</script>
+
+<script type="text/ng-template" id="views/play-dashboard.html">
+<p>This is the play-dashboard view.</p>
 
 </script>
 
@@ -140,6 +160,19 @@
 		<h1 ng-if="!isItRight()">You are WRONG!!!</h1>
 	</div>
 </div>
+</script>
+
+<script type="text/ng-template" id="views/set-user.html">
+<p>This is the set-user/:type view.</p>
+
+</script>
+
+<script type="text/ng-template" id="views/wait-dashboard.html">
+<h1>Waiting for the game to start</h1>
+</script>
+
+<script type="text/ng-template" id="views/wait.html">
+<h1>Waiting for the game to start</h1>
 </script>
 <!-- End Templates -->
 
