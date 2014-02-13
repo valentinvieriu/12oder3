@@ -1,6 +1,57 @@
 @import "_variables";
 @import "bootstrap-sass/vendor/assets/stylesheets/bootstrap";
+$bg-team-1 : #FFF;
+$bg-team-2 : #ea182a;
+$bg-team-3 : #02b1db;
+$a1        : #ffa32a;
+$a2        : #ff0298;
+$a3        : #4dda41;
+$black     : #1d1d1d;
+$white     : #FFFFFF;
 
+
+@font-face {
+  font-family: 'SapientCentroSlab-Black';
+  src: url('fonts/SapientCentroSlab-Black.otf');
+}
+@font-face {
+  font-family: 'SapientCentroSlab-LightItalic';
+  src: url('fonts/SapientCentroSlab-LightItalic.otf');
+}
+@font-face {
+  font-family: 'SapientCentroSlab-Light';
+  src: url('fonts/SapientCentroSlab-Light.otf');
+}
+
+body {
+	background-color : $black;
+	color            : $white;
+	font-family      : 'SapientCentroSlab-Light';
+}
+.container {
+	margin-top: 40px;
+}
+.admin {
+	color:$black;
+	background-color : #FFF;
+}
+
+.dashboard-start {
+	padding-top: 160px
+}
+
+.score {
+	text-align:center;
+	font-family      : 'SapientCentroSlab-Black';
+	font-size:20px;
+	// margin-top: -40px
+}
+.bar-chart {
+	margin-top: 100px;
+}
+.animated-picture {
+	margin-bottom: 20px;
+}
 .btn-block  {
 	padding-right : 10px;
 	padding-left  : 10px;
@@ -9,13 +60,13 @@
 }
 .btn {
 	&.a1 {
-		background-color: $brand-primary;
+		background-color: $a1;
 	}
 	&.a2 {
-		background-color: $brand-success;
+		background-color: $a2;
 	}
 	&.a3 {
-		background-color: $brand-danger;
+		background-color: $a3;
 	}
 }
 .vote {
@@ -23,13 +74,22 @@
 	float:left;
 	width:10%;
 	height:30px;
-	&.team-1 {
-		background-color: orange;
-	}	
-	&.team-2 {
-		background-color: green;
-	}	
-	&.team-3 {
-		background-color: blue;
-	}
+}
+.team-1 {
+	background-color: $bg-team-1;
+}	
+.team-2 {
+	background-color: $bg-team-2;
+}	
+.team-3 {
+	background-color: $bg-team-3;
+}
+.team-color-1 {
+	color: $bg-team-1;
+}	
+.team-color-2 {
+	color: $bg-team-2;
+}	
+.team-color-3 {
+	color: $bg-team-3;
 }

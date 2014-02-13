@@ -3,6 +3,8 @@
 angular.module('12oder3App')
 	.controller('AdminDashboardCtrl', function(
 		$scope,
+		$document,
+		$rootScope,
 		Localstorage,
 		$interval,
 		$timeout,
@@ -10,6 +12,8 @@ angular.module('12oder3App')
 		helpers
 	) {
 		var stop;
+		$document.find('body').addClass('admin');
+
 		$scope.timeOut       = data.timeOut;
 		$scope.questions     = data.fBase.questions;
 		$scope.usedQuestions = [];
@@ -66,12 +70,16 @@ angular.module('12oder3App')
 	// fakeUsers();
 	$scope.fakeVoting = fakeVoting;
 
-	function fakeUsers() {
+	$scope.fakeUsers = function fakeUsers() {
 		var currentUserId;
 		for (var i = 70; i >= 0; i--) {
-			data.fBase.users.$add({
-				"name": i
-			});
+			$timeout(function(i) {
+				var names = 'Austin, Camden, Cameron, Emmett, Griffin, Harrison, Hudson, Jace, Jonah, Kingston, Lincoln, Marcus, Nash, Nathan, Oliver, Parker, Ryan, Ryder, Seth, Xavier'.split(', ');
+				data.fBase.users.$add({
+					"name": names[helpers.getRandom(0,19)] + ' '+names[helpers.getRandom(0,19)],
+					"score": helpers.getRandom(0,19)
+				});
+			},helpers.getRandom(20, 5000));
 		};
 	}
 
