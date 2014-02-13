@@ -9,13 +9,13 @@
 	  </div>
 	</div>
 </div>
-	<div class="col-sm-12" ng-hide="playTimer==0">
+	<div class="col-sm-12" ng-if="!timeOver">
 		<button ng-repeat="answer in ['a1','a2','a3']" 
 			type ="button" class="btn {{answer}} btn-lg btn-block" 
 			ng-class="{'active':lastVote==answer}" ng-disabled="playTimer>10" ng-click="vote(answer)">{{currentQuestion[answer]}}</button>
 	</div>
-	<div class="col-sm-12" ng-show="playTimer==0">
-		<h1 ng-if="isItRight()">You are RIGHT!!!</h1>
-		<h1 ng-if="!isItRight()">You are WRONG!!!</h1>
+	<div class="col-sm-12" ng-if="timeOver">
+		<h1 ng-if="isItRight">You are RIGHT!!!</h1>
+		<h1 ng-if="!isItRight">You are WRONG!!!</h1>
 	</div>
 </div>
