@@ -14,7 +14,6 @@ angular.module('12oder3App')
 {	$scope.name = Localstorage.get('name');
 	$scope.currentUser = data.fBase.currentUser;
     $scope.saveName =  function(name) {
-        Localstorage.set('name',name);
         data.fBase.currentUser.$child('name').$set(name);
         $scope.name = name;
     }

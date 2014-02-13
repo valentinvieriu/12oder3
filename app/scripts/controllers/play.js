@@ -10,7 +10,7 @@ angular.module('12oder3App')
             data
         ) {
             var qid                = $routeParams.qid;
-            var currentUser        = Localstorage.get('uuid');
+            var userId        = Localstorage.get('uuid');
             var stop;
             $scope.timeOut         = data.timeOut;
             $scope.currentQuestion = data.fBase.questions.$child(qid);
@@ -22,16 +22,19 @@ angular.module('12oder3App')
                 $scope.playTimer = data.fBase.playTimer.$value;
 
             });
-            $scope.activeQuestion.$on('loaded',function(){
-                if ($scope.activeQuestion.$value != qid) {
-                    $location.path('/');
-                }
+            // $scope.activeQuestion.$on('loaded',function(){
+            //     if ($scope.activeQuestion.$value != qid) {
+            //         $location.path('/');
+            //     }
 
-            });
+            // });
 
 
             $scope.vote = function(vote) {
-                data.fBase.votes.$child(qid+'/'+currentUser).$set(vote);
+                data.fBase.votes.$child(qid+'/'+userId).$set({
+                    'vote':vote,
+                    'team':$scope.currentUser.team
+                });
                 $scope.lastVote = vote;
             }
 

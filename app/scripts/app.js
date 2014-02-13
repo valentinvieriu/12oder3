@@ -63,23 +63,19 @@ angular.module('12oder3App', [
     })
     .run(function(data, $location, $rootScope, helpers, Localstorage) {
         var browserRoute = $location.path();
-        var currentUserName = Localstorage.get('name');
         data.init();
+        // console.log(helpers.userType('user'),helpers.userType('dashboard'));
         if (helpers.userType('user') || helpers.userType('dashboard')) {
             $rootScope.playPage = helpers.userType('user') ? data.fBase.playPage : data.fBase.playDashboard;
-
+            // console.log(new Date().getTime(), $rootScope.playPage)
             $rootScope.playPage.$on('loaded', function() {
                 var newRoute = $rootScope.playPage.$value;
-                if (currentUserName) {
-                    $location.path(newRoute);
-                };
-                // console.log($rootScope.playPage.$value)
+                $location.path(newRoute);
+                // console.log($rootScope.playPage.$value);
             })
             $rootScope.playPage.$on('change', function(route) {
-                currentUserName = Localstorage.get('name');
-                if (currentUserName) {
-                    $location.path(route);
-                };
+                $location.path($rootScope.playPage.$value);
+                // console.log($rootScope.playPage.$value);
             });
         }
 

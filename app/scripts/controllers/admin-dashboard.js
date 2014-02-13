@@ -41,7 +41,7 @@ angular.module('12oder3App')
 		};
 		$scope.setQuestion = function(qid) {
 			data.fBase.playPage.$set('/play/' + qid);
-			data.fBase.playDashboard.$set('/play-dashbard/' + qid);
+			data.fBase.playDashboard.$set('/play-dashboard/' + qid);
 			data.fBase.activeQuestion.$set(qid);
 			$scope.playTimer = data.timeOut + 1;
 		};

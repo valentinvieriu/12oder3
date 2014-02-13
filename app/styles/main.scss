@@ -18,4 +18,18 @@
 		background-color: $brand-danger;
 	}
 }
-
+.vote {
+	display: block;
+	float:left;
+	width:10%;
+	height:30px;
+	&.team-1 {
+		background-color: orange;
+	}	
+	&.team-2 {
+		background-color: green;
+	}	
+	&.team-2 {
+		background-color: blue;
+	}
+}
