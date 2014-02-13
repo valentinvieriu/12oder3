@@ -3,9 +3,9 @@
 $bg-team-1 : #FFF;
 $bg-team-2 : #ea182a;
 $bg-team-3 : #02b1db;
-$a1        : #ffa32a;
-$a2        : #ff0298;
-$a3        : #4dda41;
+$a1        : #ffcb1f;
+$a2        : #80c342;
+$a3        : #f15a22;
 $black     : #1d1d1d;
 $white     : #FFFFFF;
 
@@ -21,6 +21,11 @@ $white     : #FFFFFF;
 @font-face {
   font-family: 'SapientCentroSlab-Light';
   src: url('fonts/SapientCentroSlab-Light.otf');
+}
+
+@font-face {
+  font-family: 'SapientCentroSlab-Medium';
+  src: url('fonts/SapientCentroSlab-Medium.otf');
 }
 
 body {
@@ -46,6 +51,24 @@ body {
 	font-size:20px;
 	// margin-top: -40px
 }
+
+.d-question {
+	margin-top       : 40px;
+	padding          : 30px 30px 25px;
+	background-color : $white;
+	color            : $black;
+	font-size        : 32px;
+	font-family      : 'SapientCentroSlab-Medium';
+	line-height      : 32px;
+}
+.d-answer {
+	padding     :20px;
+	margin-top: 40px;
+	color       : $black;
+	text-align  :center;
+	font-size   :44px;
+	font-family :'SapientCentroSlab-Medium';
+}
 .bar-chart {
 	margin-top: 100px;
 }
@@ -69,6 +92,17 @@ body {
 		background-color: $a3;
 	}
 }
+
+.bg-a1 {
+	background-color: $a1;
+}
+.bg-a2 {
+	background-color: $a2;
+}
+.bg-a3 {
+	background-color: $a3;
+	}
+
 .vote {
 	display: block;
 	float:left;
