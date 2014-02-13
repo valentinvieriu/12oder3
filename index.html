@@ -8,7 +8,7 @@
     <meta name="viewport" content="width=device-width">
     <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
     <link rel="stylesheet" href="styles/vendor.css"/>
-    <link rel="stylesheet" href="styles/201139e0.main.css"/>
+    <link rel="stylesheet" href="styles/2f665596.main.css"/>
   </head>
   <body ng-app="12oder3App" ng-cloak="">
 
@@ -16,9 +16,9 @@
 
     </div>
 
-    <script src="scripts/7593ef60.vendor.js"></script>
+    <script src="scripts/51771ef0.vendor.js"></script>
 
-        <script src="scripts/24f61d5b.scripts.js"></script>
+        <script src="scripts/854ff474.scripts.js"></script>
 
 
 
@@ -176,8 +176,26 @@
 </script>
 
 <script type="text/ng-template" id="views/play-dashboard.html">
-<p>This is the play-dashboard view.</p>
+<div class="row">
+	<h2 class="col-sm-12">{{currentQuestion.question}}</h2>
+</div>
 
+<div class="row" ng-show="playTimer">
+	<div class="col-sm-12">
+		<div class="progress progress-striped active">
+		  <div class="progress-bar progress-bar-danger "  role="progressbar" aria-valuenow="45" aria-valuemin="0" aria-valuemax="100" style="width: {{(timeOut-playTimer+1)*10}}%">
+		  </div>
+		</div>
+	</div>
+</div>
+
+<div class="row">
+	<div class="col-sm-4 {{answer}}" ng-repeat="answer in ['a1','a2','a3']">
+		{{currentQuestion[answer]}}
+		<hr>
+		<span ng-repeat="vote in currentVotes | orderByPriority |filter:{'vote':answer}" class="vote team-{{vote.team}}">{{vote.team}}</span> 
+	</div>
+</div>
 </script>
 
 <script type="text/ng-template" id="views/play.html">
