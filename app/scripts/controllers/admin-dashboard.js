@@ -5,6 +5,7 @@ angular.module('12oder3App')
 		$scope,
 		Localstorage,
 		$interval,
+		$timeout,
 		data,
 		helpers
 	) {
@@ -61,5 +62,66 @@ angular.module('12oder3App')
 			}, 1000);
 
 		};
+
+	// fakeUsers();
+	$scope.fakeVoting = fakeVoting;
+
+	function fakeUsers() {
+		var currentUserId;
+		for (var i = 70; i >= 0; i--) {
+			data.fBase.users.$add({
+				"name": i
+			});
+		};
+	}
+
+	function fakeVoting() {
+		var question = data.fBase.activeQuestion;
+		var users = data.fBase.users;
+		users.$on('loaded', function() {
+			var array = users.$getIndex();
+			for (var i = 4; i >= 0; i--) {
+				angular.forEach(_.shuffle(array), function(userId) {
+					var qid = question.$value;
+					$timeout(function() {
+						data.fBase.votes.$child(qid + '/' + userId).$set({
+							'vote': 'a' + helpers.getRandom(1, 3),
+							'team': helpers.getRandom(1, 3)
+						});
+					}, helpers.getRandom(20, 5000))
+				})
+			};
+		})
+
+
+
+
+		
+	}
+
+	function cluster(a) {
+		var result = [];
+		var list = _.reduce(a, function(counts, key) {
+				counts[key]++;
+				return counts
+			},
+			_.object(_.map(_.uniq(a), function(key) {
+				return [key, 0]
+			})));
+
+		_.each(list, function(val, key) {
+			if (val > 10) {
+				result.push({
+					keyword: key,
+					count: val
+				})
+			};
+		})
+		result = _.sortBy(result, 'count').reverse();
+		// Localstorage.set('popularKeywords',result);
+		return result;
+	}
+
+
 
 	});
