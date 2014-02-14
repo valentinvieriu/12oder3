@@ -4,6 +4,7 @@ angular.module('12oder3App', [
     'firebase',
     'lodash',
     'ngAnimate',
+    'ngTouch',
     'ngRoute'
 ])
     .config(function($routeProvider, $compileProvider) {

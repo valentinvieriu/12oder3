@@ -33,7 +33,7 @@ angular.module('12oder3App')
 
             $scope.currentUser.$on('loaded', function(){
                 console.log($scope.currentUser);
-                $document.find('body').addClass('team-'+$scope.currentUser.team);
+                angular.element($document[0].querySelector('.team-bar')).addClass('team-'+$scope.currentUser.team);
             });
             // $scope.activeQuestion.$on('loaded',function(){
             //     if ($scope.activeQuestion.$value != qid) {

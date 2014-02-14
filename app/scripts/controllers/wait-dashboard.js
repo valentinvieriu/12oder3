@@ -17,12 +17,13 @@ angular.module('12oder3App')
 			};
 			$scope.users.$on('loaded', function(){
 				angular.forEach($scope.users.$getIndex(), function(item){
-					console.log($scope.users[item].team ,$scope.users[item].score);
-					if ($scope.users[item].team == 1) { $scope.teamScore[1] = $scope.teamScore[1] + $scope.users[item].score};
-					if ($scope.users[item].team == 2) { $scope.teamScore[2] = $scope.teamScore[2] + $scope.users[item].score};
-					if ($scope.users[item].team == 3) { $scope.teamScore[3] = $scope.teamScore[3] + $scope.users[item].score};
+					// console.log($scope.users[item].team ,$scope.users[item].score);
+					var userScore = $scope.users[item].score || 0;
+					if ($scope.users[item].team == 1) { $scope.teamScore[1] = $scope.teamScore[1] + userScore;};
+					if ($scope.users[item].team == 2) { $scope.teamScore[2] = $scope.teamScore[2] + userScore;};
+					if ($scope.users[item].team == 3) { $scope.teamScore[3] = $scope.teamScore[3] + userScore;};
 					totalScore += item.score;
 				});
-				console.log($scope.teamScore );
+				// console.log($scope.teamScore );
 			});
 		});

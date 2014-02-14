@@ -7,7 +7,7 @@
 		</div>
 		<div class="row bar-chart">
 			<div class="col-md-4" ng-repeat="team in [1,2,3]">
-				<div class="score">{{teamScore[team]|json}}</div>
+				<div class="score">{{teamScore[team]}}</div>
 				<div class="bar team-{{team}}" style="height:{{teamScore[team]}}px;"></div>
 			</div>
 		</div>

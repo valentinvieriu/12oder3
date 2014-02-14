@@ -1,5 +1,6 @@
 @import "_variables";
 @import "bootstrap-sass/vendor/assets/stylesheets/bootstrap";
+@import "compass/css3";
 $bg-team-1 : #FFF;
 $bg-team-2 : #ea182a;
 $bg-team-3 : #02b1db;
@@ -71,9 +72,27 @@ body {
 }
 .bar-chart {
 	margin-top: 100px;
+	.bar {
+		@include transition(all 0 cubic-bezier(0.15, 0.86, 0.22, 0.95));
+		@include transform(scaleY(0));
+		&.team-1,
+		&.team-2,
+		&.team-3 {
+			@include transform(scaleY(1));
+			@include transition-duration(1250ms);
+		}
+		&.team-2 { @include transition-delay(250ms);}
+		&.team-3 { @include transition-delay(500ms);}
+	}
 }
 .animated-picture {
 	margin-bottom: 20px;
+}
+
+.team-bar {
+	margin-top    : -40px;
+	margin-bottom : 20px;
+	height        : 40px;
 }
 .btn-block  {
 	padding-right : 10px;
@@ -126,4 +145,144 @@ body {
 }	
 .team-color-3 {
 	color: $bg-team-3;
+}
+
+
+// Animations
+
+// keyframes mixin
+@mixin keyframes($name) {
+  @-webkit-keyframes #{$name} {
+    @content; 
+  }
+  @-moz-keyframes #{$name} {
+    @content;
+  }
+  @-ms-keyframes #{$name} {
+    @content;
+  }
+  @keyframes #{$name} {
+    @content;
+  } 
+}
+
+@include keyframes(zoomAnswer) {
+  0% {
+    @include transform(scale(1));
+  }
+  50% {
+    @include transform(scale(1.2));
+  }
+  100% {
+    @include transform(scale(1));
+  }
+}
+
+.correct-answer {
+   @include animation(zoomAnswer 1.5s infinite);
+   z-index: 100;
+}
+/* ==========================================================================
+=ngAnimation Toggle Fade 
+========================================================================== */
+
+.toggle {
+	@include transition(opacity 0 cubic-bezier(0.15, 0.86, 0.22, 0.95));
+	&.ng-enter {
+		@include transition(all 0 cubic-bezier(0.470, 0.000, 0.745, 0.715));
+		@include translate3d(-5px,0,0);
+		opacity: 0;
+		@include transition-duration(250ms);
+		@include transition-delay(150ms);
+	}
+
+	&.ng-enter-active {
+		@include translate3d(0,0,0);
+
+		opacity: 1;	
+	}
+
+	&.ng-leave {
+		@include transition(all 0 cubic-bezier(0.390, 0.575, 0.565, 1.000));
+		@include translate3d(0,0,0);
+		opacity: 1;
+		@include transition-duration(150ms);
+	}
+
+	&.ng-leave-active {
+		@include translate3d(5px,0,0);
+		opacity: 0;	
+	}
+
+	// Hide
+	&.ng-hide-add {
+		@include transition-duration(125ms);
+		opacity:1;		
+	}	
+	&.ng-hide-add.ng-hide-add-active {
+		opacity:0;
+	}
+
+	// Show
+	&.ng-hide-remove {
+		@include transition-duration(125ms);
+		display:block!important;
+		opacity:0;
+	}
+	&.ng-hide-remove.ng-hide-remove-active {
+		opacity:1;
+	}
+}
+
+/* ------------------------------------------- */
+/* Scale Fade 
+/* ------------------------------------------- */
+
+.scale-fade {
+	@include transition(all 0 cubic-bezier(0.15, 0.86, 0.22, 0.95));
+
+	&.ng-enter {
+		@include transform(scale(0.1));
+		@include transition-duration(1250ms);
+		opacity: 0;
+	}
+
+	&.ng-enter-active {
+		@include transform(scale(1));
+		opacity: 1;	
+	}
+
+	&.ng-leave {
+		@include transform(scale(1));
+		@include transition-duration(1250ms);
+		opacity: 1;
+	}
+
+	&.ng-leave-active {
+		@include transform(scale(0.1)); 
+		opacity: 0;	
+	}
+
+	// Hide
+	&.ng-hide-add {
+		@include transform(scale(1));
+		@include transition-duration(1250ms);
+		opacity:1;		
+	}	
+	&.ng-hide-add.ng-hide-add-active {
+		@include transform(scale(0.1)); 
+		opacity:0;
+	}
+
+	// Show
+	&.ng-hide-remove {
+		@include transform(scale(0.1));
+		@include transition-duration(1250ms);
+		display:block!important;
+		opacity:0;
+	}
+	&.ng-hide-remove.ng-hide-remove-active {
+		@include transform(scale(1));
+		opacity:1;
+	}
 }

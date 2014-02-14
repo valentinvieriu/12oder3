@@ -6,6 +6,7 @@ angular.module('12oder3App')
 			$scope,
 			$routeParams,
 			$location,
+			$timeout,
 			Localstorage,
 			data
 		) {
@@ -21,6 +22,9 @@ angular.module('12oder3App')
 
 			data.fBase.playTimer.$on('change', function(newTime) {
 				$scope.playTimer = data.fBase.playTimer.$value;
+				if ($scope.playTimer == 0 ) {
+					$timeout(function(){$scope.revealAnswer = true},2000);
+				};
 
 			});
 
