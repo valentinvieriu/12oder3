@@ -1,17 +1,26 @@
+<div class="row hire-logo">
+    <div class="col-xs-6 col-xs-push-1">
+        <img src="images/new-hire-logo.png" class="img-responsive" alt="">
+    </div>
+</div>
 <div class="row" ng-show="currentUser.name">
-    <div class="col-sm-12">
-    	<div class="well">
-    		<h1>Hi {{currentUser.name}}, the game will start soon!</h1>
+    <div class="col-xs-10 col-xs-push-1">
+    	<div class="waiting">
+    		<h1>Hi <span class="team-color-{{currentUser.team}}">{{currentUser.name}}</span>, the game will start soon!</h1>
     	</div>
     </div>
 </div>
 <div class="row" ng-hide="currentUser.name">
-    <div class="col-sm-6">
+    <div class="col-xs-10 col-xs-push-1">
         <div class="input-group">
-            <input type="text" class="form-control" ng-model="formName" placeholder="Enter your name">
-            <span class="input-group-btn">
-                <button class="btn btn-default" type="button" ng-click="saveName(formName)">Start</button>
-            </span>
+            <form ng-submit="saveName(formName)">
+                <input type="text" class="form-control input-lg" ng-model="formName" placeholder="Enter your name">
+            </form>
         </div>
+    </div>
+</div>
+<div class="row" ng-hide="currentUser.name">
+    <div class="col-xs-6 col-xs-push-1">
+        <button class="btn btn-search btn-lg btn-default" type="button" ng-click="saveName(formName)">Join the game</button>
     </div>
 </div>

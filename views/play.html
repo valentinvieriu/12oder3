@@ -1,15 +1,15 @@
 
 <div class="row team-bar"></div>
-<div class="row">
+<div class="row" ng-show="playTimer>10" >
 	<h2 class="col-sm-12">{{currentQuestion.question}}</h2>
 </div>
-<div class="row">
-<div class="col-sm-12">
-	<div class="progress progress-striped active">
-	  <div class="progress-bar progress-bar-danger "  role="progressbar" aria-valuenow="45" aria-valuemin="0" aria-valuemax="100" style="width: {{(timeOut-playTimer+1)*10}}%">
-	  </div>
+<div class="row" ng-hide="playTimer>10" >
+	<div class="col-sm-12">
+		<div class="progress progress-striped active">
+		  <div class="progress-bar progress-bar-danger "  role="progressbar" aria-valuenow="45" aria-valuemin="0" aria-valuemax="100" style="width: {{(timeOut-playTimer+1)*10}}%">
+		  </div>
+		</div>
 	</div>
-</div>
 	<div class="col-sm-12" ng-if="!timeOver">
 		<button ng-repeat="answer in ['a1','a2','a3']" 
 			type ="button" class="btn {{answer}} btn-lg btn-block" 
