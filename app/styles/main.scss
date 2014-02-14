@@ -149,6 +149,60 @@ body {
 
 
 // Animations
+.cube-container {
+  width: 164px;
+  height: 164px;
+  position: relative;
+  @include perspective(1000px);
+}
+
+.cube{
+	@include transition(transform 0 cubic-bezier(0.15, 0.86, 0.22, 0.95));
+	@include transition-duration(1000ms);
+	@include transform-style (preserve-3d);
+	@include transform( translateZ( -82px ));
+	position        : absolute;
+	width           : 100%;
+	height          : 100%;
+
+	& .face-1 { @include transform( rotateY(   0deg ) translateZ( 82px ) ); }
+	& .face-2 { @include transform( rotateX( 180deg ) translateZ( 82px ) ); }
+	& .face-3 { @include transform( rotateY(  90deg ) translateZ( 82px ) ); }
+	& .face-4 { @include transform( rotateY( -90deg ) translateZ( 82px ) ); }
+	& .face-5 { @include transform( rotateX(  90deg ) translateZ( 82px ) ); }
+	& .face-6 { @include transform( rotateX( -90deg ) translateZ( 82px ) ); }
+
+	&.set-face-1 { @include transform( translateZ( -82px ) rotateY(   0deg   ) ); }
+	&.set-face-2 { @include transform( translateZ( -82px ) rotateX(  -180deg ) ); }
+	&.set-face-3 { @include transform( translateZ( -82px ) rotateY(  -90deg  ) ); }
+	&.set-face-4 { @include transform( translateZ( -82px ) rotateY(  90deg   ) ); }
+	&.set-face-5 { @include transform( translateZ( -82px ) rotateX(  -90deg  ) ); }
+	&.set-face-6 { @include transform( translateZ( -82px ) rotateX(  90deg   ) ); }
+
+    & .face-1 { background: hsla(   0, 100%, 50%, 0.7 ); }
+    & .face-2 { background: hsla(  60, 100%, 50%, 0.7 ); }
+    & .face-3 { background: hsla( 120, 100%, 50%, 0.7 ); }
+    & .face-4 { background: hsla( 180, 100%, 50%, 0.7 ); }
+    & .face-5 { background: hsla( 240, 100%, 50%, 0.7 ); }
+    & .face-6 { background: hsla( 300, 100%, 50%, 0.7 ); }
+
+
+}
+
+.cube figure {
+	position : absolute;
+	display  : block;
+	width    : 164px;
+	height   : 164px;
+	      line-height: 164px;
+      font-size: 120px;
+      font-weight: bold;
+      color: white;
+      text-align: center;
+	@include backface-visibility( hidden );
+}
+
+
 
 // keyframes mixin
 @mixin keyframes($name) {

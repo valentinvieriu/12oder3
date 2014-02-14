@@ -5,7 +5,10 @@ angular.module('12oder3App')
   	function(
 			$scope,
 			$location,
+			$timeout,
+			$document,
 			Localstorage,
+			helpers,
 			data
 		) {
   			var totalScore = 0;
@@ -15,6 +18,23 @@ angular.module('12oder3App')
 				'2':0,
 				'3':0
 			};
+		
+			var result = [];
+			for (var i = 10 - 1; i >= 0; i--) {
+				result.push(helpers.getRandom(1,5));
+				};
+			$scope.setRandomActive = result;
+
+			$timeout(function(){
+				[].forEach.call(
+				  $document[0].querySelectorAll('.cube'), 
+				  function(el){
+				    angular.element(el).addClass('set-face-6');
+				  }
+				);
+						
+			},10000);
+
 			$scope.users.$on('loaded', function(){
 				angular.forEach($scope.users.$getIndex(), function(item){
 					// console.log($scope.users[item].team ,$scope.users[item].score);
