@@ -5,13 +5,16 @@ angular.module('12oder3App')
         function(
             $scope, 
             $location,
+             $document,
             data,
             helpers,
             _,
             Uuids,
             Localstorage
         ) 
-{	$scope.name = Localstorage.get('name');
+{	
+    $document.find('body').addClass('login');
+    $scope.name = Localstorage.get('name');
     var userType = Localstorage.get('userType') || 'user';
 	$scope.currentUser = data.fBase.currentUser;
     

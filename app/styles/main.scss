@@ -29,6 +29,26 @@ $white     : #FFFFFF;
   src: url('fonts/SapientCentroSlab-Medium.otf');
 }
 
+@mixin custom-btn ($color, $background) {
+	@include gradient-vertical($start-color : $background, $end-color: darken($background,15%), $start-percent: 0%, $end-percent: 100%);
+	position                                :relative;
+	border                                  : none;
+	box-shadow                              : inset 0px 1px 0px lighten($background,15%), 0px 5px 0px 0px darken($background,35%), 0px 10px 5px #000;
+	color                                   : $color;
+
+	&:hover,
+	&:focus,
+	&:active,
+	&.active {
+	@include gradient-vertical($start-color : darken($background,15%), $end-color: $background, $start-percent: 100%, $end-percent: 0%);
+		top                                     :3px;
+		box-shadow                              : inset 0px 1px 0px lighten($background,15%), 0px 2px 0px 0px darken($background,35%), 0px 5px 3px #000;
+		color                                   : $color;
+	}
+
+}
+
+
 body {
 	background-color : $black;
 	color            : $white;
@@ -41,7 +61,25 @@ body {
 	color:$black;
 	background-color : #FFF;
 }
+.login {
 
+}
+.hire-logo {
+	margin-bottom: 80px;
+}
+.btn-search {
+	margin-top       : 20px;
+	// border           : none;
+	// border-bottom    : 4px solid darken($bg-team-2,15%);
+	// border-radius    : 0;
+	// background-color : $bg-team-2;
+	// color            : $white;
+	padding          : 8px 40px;
+	@include custom-btn ($white, $bg-team-2);
+}
+.waiting {
+	color:darken($white,50%);
+}
 .dashboard-start {
 	padding-top: 160px
 }
@@ -95,20 +133,22 @@ body {
 	height        : 40px;
 }
 .btn-block  {
-	padding-right : 10px;
-	padding-left  : 10px;
+	margin-bottom : 20px;
 	min-height    : 100px;
 	white-space   : normal;
+	font-size     : 20px;
 }
+
+
 .btn {
 	&.a1 {
-		background-color: $a1;
+		@include custom-btn ($black, $a1);
 	}
 	&.a2 {
-		background-color: $a2;
+		@include custom-btn ($black, $a2);
 	}
 	&.a3 {
-		background-color: $a3;
+		@include custom-btn ($black, $a3);
 	}
 }
 
@@ -153,7 +193,7 @@ body {
   width: 164px;
   height: 164px;
   position: relative;
-  @include perspective(1000px);
+  @include perspective(800px);
 }
 
 .cube{
