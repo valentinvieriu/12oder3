@@ -193,7 +193,7 @@ module.exports = function (grunt) {
             '<%= yeoman.dist %>/scripts/{,*/}*.js',
             '<%= yeoman.dist %>/styles/{,*/}*.css',
             // '<%= yeoman.dist %>/images/{,*/}*.{png,jpg,jpeg,gif,webp,svg}',
-            '<%= yeoman.dist %>/styles/fonts/*'
+            // '<%= yeoman.dist %>/styles/fonts/*'
           ]
         }
       }
@@ -338,10 +338,10 @@ module.exports = function (grunt) {
     //     }
     //   }
     // },
-    // uglify: {
-    //   options :{
-    //     mangle: false
-    //   }
+    uglify: {
+      options :{
+        mangle: false
+      }
       // dist: {
       //   files: {
       //     '<%= yeoman.dist %>/scripts/scripts.js': [
@@ -352,7 +352,7 @@ module.exports = function (grunt) {
     // },
     // concat: {
     //   dist: {}
-    // },
+    },
     // Inining the views
     inline_angular_templates: {
       dist: {
