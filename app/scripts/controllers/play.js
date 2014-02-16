@@ -8,6 +8,7 @@ angular.module('12oder3App')
             $document,
             $location,
             Localstorage,
+            audio,
             data,
             _
         ) {
@@ -63,6 +64,9 @@ angular.module('12oder3App')
                     var newScore =  oldScore + 1;
                     console.log('newScore',newScore, new Date().getTime());
                     $scope.userScore.$set(newScore);
+
+                    audio.src = 'sounds/cheer.mp3';
+                    audio.play();
                     // savedScore = true;
                     
                     

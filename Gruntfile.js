@@ -291,7 +291,7 @@ module.exports = function (grunt) {
             'views/{,*/}*.html',
             // 'bower_components/**/*',
             'scripts/vendors/**/*',
-            'api/**/*',
+            'sounds/*',
             'images/{,*/}*.{webp}',
             'styles/fonts/*'
           ]
