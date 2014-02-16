@@ -84,12 +84,7 @@ body {
 	padding-top: 160px
 }
 
-.score {
-	text-align:center;
-	font-family      : 'SapientCentroSlab-Black';
-	font-size:20px;
-	// margin-top: -40px
-}
+
 
 .d-question {
 	margin-top       : 40px;
@@ -109,10 +104,18 @@ body {
 	font-family :'SapientCentroSlab-Medium';
 }
 .bar-chart {
-	margin-top: 100px;
+	margin-top : 55px;
+	& > div {
+		height   : 380px;
+		position : relative;
+		overflow : hidden;
+	}
 	.bar {
 		@include transition(all 0 cubic-bezier(0.15, 0.86, 0.22, 0.95));
 		@include transform(scaleY(0));
+		position : absolute;
+		bottom   :0;
+		width    : 100%;
 		&.team-1,
 		&.team-2,
 		&.team-3 {
@@ -121,6 +124,14 @@ body {
 		}
 		&.team-2 { @include transition-delay(250ms);}
 		&.team-3 { @include transition-delay(500ms);}
+
+		.score {
+			text-align:center;
+			font-family      : 'SapientCentroSlab-Black';
+			font-size:20px;
+			margin-top: -40px;
+			margin-right: 15px;
+		}
 	}
 }
 .animated-picture {
