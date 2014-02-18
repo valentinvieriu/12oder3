@@ -292,7 +292,7 @@ module.exports = function (grunt) {
             // 'bower_components/**/*',
             'scripts/vendors/**/*',
             'sounds/*',
-            'images/{,*/}*.{webp}',
+            'images/**/*',
             'styles/fonts/*'
           ]
         }, {
