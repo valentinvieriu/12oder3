@@ -61,6 +61,14 @@ angular.module('12oder3App', [
               templateUrl: 'views/reset.html',
               controller: 'ResetCtrl'
             })
+            .when('/last-question', {
+              templateUrl: 'views/last-question.html',
+              controller: 'LastQuestionCtrl'
+            })
+            .when('/start-party', {
+              templateUrl: 'views/start-party.html',
+              controller: 'StartPartyCtrl'
+            })
             .otherwise({
                 redirectTo: '/'
             });

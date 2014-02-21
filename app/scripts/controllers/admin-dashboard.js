@@ -48,6 +48,17 @@ angular.module('12oder3App')
 				
             },300);
 		};
+
+		$scope.lastQuestion = function() {
+			data.fBase.playDashboard.$set('/last-question');
+			data.fBase.playPage.$set('/last-question');
+		};		
+
+		$scope.party = function() {
+			data.fBase.playDashboard.$set('/start-party');
+			data.fBase.playPage.$set('/start-party');
+		};
+
 		$scope.setQuestion = function(qid) {
 			data.fBase.playPage.$set('/play/' + qid);
 			data.fBase.playDashboard.$set('/play-dashboard/' + qid);
