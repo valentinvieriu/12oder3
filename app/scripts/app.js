@@ -57,6 +57,10 @@ angular.module('12oder3App', [
               templateUrl: 'views/wait.html',
               controller: 'WaitCtrl'
             })
+            .when('/reset', {
+              templateUrl: 'views/reset.html',
+              controller: 'ResetCtrl'
+            })
             .otherwise({
                 redirectTo: '/'
             });

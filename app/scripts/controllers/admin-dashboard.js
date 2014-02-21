@@ -41,8 +41,12 @@ angular.module('12oder3App')
 		$scope.reset = function() {
 			data.fBase.users.$remove();
 			data.fBase.votes.$remove();
-			data.fBase.playDashboard.$set('/');
-			data.fBase.playPage.$set('/');
+            data.fBase.playPage.$set('/reset');
+            $timeout(function(){          	
+				data.fBase.playDashboard.$set('/');
+				data.fBase.playPage.$set('/');
+				
+            },300);
 		};
 		$scope.setQuestion = function(qid) {
 			data.fBase.playPage.$set('/play/' + qid);

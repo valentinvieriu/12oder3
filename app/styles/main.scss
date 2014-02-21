@@ -29,6 +29,16 @@ $white     : #FFFFFF;
   src: url('fonts/SapientCentroSlab-Medium.otf');
 }
 
+@font-face {
+  font-family: 'SapientSansBold';
+  src: url('fonts/SPNTSB.TTF');
+}
+
+@font-face {
+  font-family: 'SapientSansBlack';
+  src: url('fonts/SPNTSK.TTF');
+}
+
 @mixin custom-btn ($color, $background) {
 	@include gradient-vertical($start-color : $background, $end-color: darken($background,15%), $start-percent: 0%, $end-percent: 100%);
 	position                                :relative;
@@ -198,7 +208,32 @@ body {
 	color: $bg-team-3;
 }
 
-
+.score {
+	margin-top       : -60px;	
+	padding          : 40px 0 20px 0;
+	background-color : #00e295;
+	text-align       : center;
+	text-shadow      : 1px 1px 0px rgba(0, 0, 0, 0.8);
+	.score-count {
+		font-size   : 98px;
+		line-height : 90px;
+		font-family : 'SapientSansBlack';
+	}
+	span {
+		font-size   : 44px;
+		font-family : 'SapientCentroSlab-Light';
+	}
+}
+.wait-message {
+	margin-top       : 20px;
+	padding          :20px 10px;
+	background-color :$white;	
+	color            :$black;
+	text-align       :center;
+	text-transform: uppercase;
+	font-size        :20px;
+	font-family      :'SapientSansBold';
+}
 // Animations
 .cube-container {
   width: 164px;
@@ -230,12 +265,12 @@ body {
 	&.set-face-5 { @include transform( translateZ( -82px ) rotateX(  -90deg  ) ); }
 	&.set-face-6 { @include transform( translateZ( -82px ) rotateX(  90deg   ) ); }
 
-    & .face-1 { background: hsla(   0, 100%, 50%, 0.7 ); }
-    & .face-2 { background: hsla(  60, 100%, 50%, 0.7 ); }
-    & .face-3 { background: hsla( 120, 100%, 50%, 0.7 ); }
-    & .face-4 { background: hsla( 180, 100%, 50%, 0.7 ); }
-    & .face-5 { background: hsla( 240, 100%, 50%, 0.7 ); }
-    & .face-6 { background: hsla( 300, 100%, 50%, 0.7 ); }
+    // & .face-1 { background: hsla(   0, 100%, 50%, 0.7 ); }
+    // & .face-2 { background: hsla(  60, 100%, 50%, 0.7 ); }
+    // & .face-3 { background: hsla( 120, 100%, 50%, 0.7 ); }
+    // & .face-4 { background: hsla( 180, 100%, 50%, 0.7 ); }
+    // & .face-5 { background: hsla( 240, 100%, 50%, 0.7 ); }
+    // & .face-6 { background: hsla( 300, 100%, 50%, 0.7 ); }
 
 
 }

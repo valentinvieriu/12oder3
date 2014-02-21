@@ -16,7 +16,9 @@
 			ng-class="{'active':lastVote==answer}" ng-disabled="playTimer>10" ng-click="vote(answer)">{{currentQuestion[answer]}}</button>
 	</div>
 	<div class="col-sm-12" ng-if="timeOver">
-		<h1 ng-if="isItRight">You are RIGHT!!!</h1>
-		<h1 ng-if="!isItRight">You are WRONG!!!</h1>
+		<br>
+		<br>
+		<img src="images/winner.jpg" class="img-responsive" alt="" ng-if="isItRight">
+		<img src="images/facepalm.jpg" class="img-responsive" alt="" ng-if="!isItRight">
 	</div>
 </div>
