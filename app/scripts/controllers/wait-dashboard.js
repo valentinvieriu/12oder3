@@ -71,4 +71,17 @@ angular.module('12oder3App')
 
 				// console.log($scope.teamScore ,normalizedTeamScore);
 			});
+
+			function preloadImage(url)
+			{
+			    var img=new Image();
+			    img.src=url;
+			};
+
+			for (var i = 1; i <= 9; i++) {
+				for (var j = 1; j <= 6; j++) {
+					preloadImage('images/Images_cube/'+i+'/'+j+'.jpg');
+				};
+			};
+
 		});
