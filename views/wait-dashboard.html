@@ -15,10 +15,10 @@
 	</div>
 	<div class="col-md-6 col-md-offset-1">
 		<div class="row">
-			<div class="col-md-4 animated-picture" ng-repeat="teamMember in [1,2,3,4,5,6,7,8,9]">
+			<div class="col-md-4 animated-picture" ng-repeat="teamMember in [1,2,3,4,5,6,7,8,9] track by $index">
 				<section class="cube-container">
 				  <div class="cube set-face-{{setRandomActive[teamMember]}}">
-				    <figure class="face-{{cubeFace}}" ng-repeat="cubeFace in [1,2,3,4,5,6]">
+				    <figure class="face-{{cubeFace}}" ng-repeat="cubeFace in [1,2,3,4,5,6] track by $index">
 				    	<img ng-src="images/Images_cube/{{teamMember}}/{{cubeFace}}.jpg" alt="">
 				    </figure>
 				  </div>
